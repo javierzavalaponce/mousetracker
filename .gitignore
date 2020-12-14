@@ -1,0 +1,13 @@
+proteus/
+*.hex
+*.err
+*.cof
+*.sym
+*.lst
+*.STA
+*.ccspjt
+*.tre
+*.osym
+*.mcw
+
+
