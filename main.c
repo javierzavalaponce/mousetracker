@@ -14,17 +14,15 @@
 #use delay(clock=8000000)
 #use rs232(baud = 9600, xmit = PIN_C6, rcv = PIN_C7)
 
-#include "LCD.C"
-#include "sensores.c"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
+#include "lcd.c"
+#include "sensores.c"
+
 
 void funcion(void);
-unsigned int16 adc_data;
-float voltage;
-int8 To_Lcd[10];
 
 //Initializing the RTOS Program
 #use rtos(timer = 0, minor_cycle = 100ms)
@@ -41,7 +39,7 @@ void Send_To_RS232()
 { 
     static volatile unsigned char j = 0;
     //Display Converted Voltage at Serial Port at a Baud Rate of 9600bps
-    printf("javier = %03d \n\r",j++);
+    printf("[data] = %03d \n\r",j++);
 }
 
 
@@ -51,6 +49,7 @@ void Send_To_lcd()
     funcion();
 }
 
+/*---------------------*/
 void lcd_puts(unsigned char * ptr)
 {
    while(*ptr != 0){
@@ -63,21 +62,20 @@ void funcion(void)
 { 
   static char buffer[50];
   static int j = 0;
- 
-  sprintf(buffer,"j = %d",test_00());
+  j = read();
+  sprintf(buffer,"j = %u",j);
   lcd_gotoxy(2, 1);                 // Go to column 2 row 1
   lcd_puts(buffer);
   lcd_gotoxy(1, 2);                 // Go to column 1 row 2
-  lcd_putc("un raton!");
-	
+  lcd_putc("test!");
 }
 
 void main()
 {
-        lcd_init();
-        set_tris_d(0x00);
-        output_d(0x00);
-        set_tris_a(0xff);
-        delay_us(10);
-        rtos_run();	
+ lcd_init();
+ adc_init();
+ set_tris_d(0x00);
+ output_d(0x00);
+ delay_us(10);
+ rtos_run();	
 }

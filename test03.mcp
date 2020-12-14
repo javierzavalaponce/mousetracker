@@ -31,6 +31,7 @@ file_003=.
 file_004=.
 file_005=.
 file_006=.
+file_007=.
 [GENERATED_FILES]
 file_000=no
 file_001=no
@@ -39,6 +40,7 @@ file_003=no
 file_004=no
 file_005=no
 file_006=no
+file_007=no
 [OTHER_FILES]
 file_000=no
 file_001=yes
@@ -47,6 +49,7 @@ file_003=yes
 file_004=yes
 file_005=yes
 file_006=yes
+file_007=yes
 [FILE_INFO]
 file_000=C:\javi\raton\test03\main.c
 file_001=C:\javi\raton\test03\main.SYM
@@ -55,6 +58,7 @@ file_003=C:\javi\raton\test03\main.STA
 file_004=C:\javi\raton\test03\main.OSYM
 file_005=C:\javi\raton\test03\LCD.OSYM
 file_006=C:\javi\raton\test03\sensores.OSYM
+file_007=sensores.c
 [SUITE_INFO]
 suite_guid={BA86BF99-4C07-4CE2-A9E7-C2A337910996}
 suite_state=
