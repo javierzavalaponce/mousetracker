@@ -34,12 +34,17 @@ void Live()
  output_toggle(PIN_B0);        //Toggle the State of LED after 200msec
 }
 
-#task(rate = 2s, max = 100ms)
+#task(rate = 3s, max = 100ms)
 void Send_To_RS232()
 { 
-    static volatile unsigned char j = 0;
-    //Display Converted Voltage at Serial Port at a Baud Rate of 9600bps
-    printf("[data] = %03d \n\r",j++);
+    static volatile unsigned char j,k = 0;
+    for(j=0; j<FIL; j++) {
+       for (k=0; k<COL; k++) {
+          printf("%03d ",A[j][k]);
+      }
+      printf("\n\r");
+    }    
+    printf("***********\n\r");
 }
 
 
@@ -74,8 +79,6 @@ void main()
 {
  lcd_init();
  adc_init();
- set_tris_d(0x00);
- output_d(0x00);
  delay_us(10);
  rtos_run();	
 }
