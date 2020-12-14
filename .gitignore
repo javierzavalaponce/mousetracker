@@ -9,5 +9,8 @@ proteus/
 *.tre
 *.osym
 *.mcw
+*.mcs
+.vscode/
+
 
 
